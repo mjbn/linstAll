@@ -18,3 +18,12 @@ Website: MJBN.IR
     sudo chmod +x ./LinstAll.py
     
     sudo ./LinstAll.py
+   <h4>Solution 2</h4>
+   
+    git clone https://github.com/MJBN/LinstAll.git
+    
+    sudo cp ./LinstAll/LinstAll.py /usr/bin/LinstAll
+    
+    sudo chmod +x /usr/bin/LinstAll
+    
+    sudo LinstAll
