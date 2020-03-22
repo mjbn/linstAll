@@ -3,7 +3,9 @@ A Tool For Installing Any Program Easily
 
 You can install any Program like Kali/BlackArch Tools, Atom, Chrome,... using LinstAll
 
-Coding By <a href="https:mjbn.ir" target="_blank">M.J. Bagheri Nejad (MJBN)</a>
+Coding By M.J. Bagheri Nejad (MJBN)
+
+Website: MJBN.IR
 
 <h2>Installation</h2>
 <h3>Using Command Line</h3>
