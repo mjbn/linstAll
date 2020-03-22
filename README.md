@@ -5,9 +5,9 @@ Coding By M.J. Bagheri Nejad (MJBN)
 
 WebSite: MJBN.IR
 
-<h3>Installation</h3>
+<h2>Installation:</h2>
 
- Using Command Line:
+ <h3>Using Command Line</h3>
 
     cd ./LinstAll
     
