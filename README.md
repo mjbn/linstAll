@@ -1,11 +1,9 @@
 # LinstAll
 A Tool For Installing Any Programs Easily
 
-Coding By M.J. Bagheri Nejad (MJBN)
+Coding By <a href="https:mjbn.ir">"M.J. Bagheri Nejad (MJBN)</a>
 
-WebSite: MJBN.IR
-
-<h2>Installation:</h2>
+<h2>Installation</h2>
 
  <h3>Using Command Line</h3>
 
