@@ -1,5 +1,5 @@
 # LinstAll
-A Tool For Installing Any Programs Easily
+A Tool For Installing Any Program Easily
 
 You can install any Program like Kali/BlackArch Tools, Atom, Chrome,... using LinstAll
 
