@@ -1,5 +1,5 @@
 # LinstAll
-A Tool For Installing Any Program Easily
+A Tool For Installing Any Program Easily In Linux
 
 You can install any Program like Kali/BlackArch Tools, Atom, Chrome, Vivaldi, LAMP (Apache, MariaDB,PHP),... using LinstAll
 
