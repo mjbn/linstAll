@@ -1,7 +1,7 @@
 # LinstAll
 A Tool For Installing Any Program Easily
 
-You can install any Program like Kali/BlackArch Tools, Atom, Chrome, LAMP (Apache, MariaDB,PHP),... using LinstAll
+You can install any Program like Kali/BlackArch Tools, Atom, Chrome, Vivaldi, LAMP (Apache, MariaDB,PHP),... using LinstAll
 
 Coding By M.J. Bagheri Nejad (MJBN)
 
