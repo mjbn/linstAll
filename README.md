@@ -9,7 +9,7 @@ Website: <a href="https://MJBN.IR">MJBN.IR</a>
 
 <h2>Installation</h2>
   <h3>Using Command Line</h3>
-   <h4>Solution 1</h4>
+   <h4>Solution 1 (recommended)</h4>
    
      git clone https://github.com/MJBN/LinstAll.git ~/ && sudo chmod +x ~/LinstAll/Installation.py && sudo ~/LinstAll/Installation.py
 
