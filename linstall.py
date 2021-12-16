@@ -5,28 +5,35 @@ from subprocess import run, PIPE
 import toml
 
 
-la_d = "\033[31m _     _           _      _    _ _ \n| |   (_)_ __  ___| |_   / \  | | |\n| |   | | '_ \/ __| __| / _ \ | | |\n| |___| | | | \__ \ |_ / ___ \| | |\n|_____|_|_| |_|___/\__/_/   \_\_|_| V1.0\033[m\n\n\033[36mA Tool For Installing Any Programs Easily\n   Coding By M.J. Bagheri Nejad(MJBN)\n\t  WebSite: MJBN.IR\033[m"
-la_kali="\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
+cpright = "\033[31m _     _           _      _    _ _ \n| |   (_)_ __  ___| |_   / \  | | |\n| |   | | '_ \/ __| __| / _ \ | | |\n| |___| | | | \__ \ |_ / ___ \| | |\n|_____|_|_| |_|___/\__/_/   \_\_|_| V1.0\033[m\n\n\033[36mA Tool For Installing Any Programs Easily\n   Coding By M.J. Bagheri Nejad(MJBN)\n\t  WebSite: MJBN.IR\033[m"
+warning="\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
 class main:
     def __init__(self):
-        print(la_d)
+        print(cpright)
         self.path = int(input("Choose One of The Option Below:\n1 - Install Recommended Programs\n2 - Install What You Want\n3 - Install LAMP Stack (MariaDB, PHP)\n4 - Installing Kali Programs\n5 - Exit\n==> "))
-        self.program_name = ["uget", "vlc", "qbittorrent", "gimp", "tor", "vivaldi", "libreoffice"]
+        
+        # Exit if the path equals 5
+        if (self.path == 5): exit();
+
+        # Recommended Programs
+        self.program_name = ["uget", "vlc", "gimp", "firefox", "libreoffice"]
+
+        #PKG Managers
         pkg = run(['ls', '/bin/apt', '/bin/pacman', '/bin/dnf'], stdout=PIPE).stdout.decode("UTF-8")
         if pkg.find('apt') != -1:
             system("apt-get update")
             system("apt-get install wget")
             architecture = run(['uname', '-m'], stdout=PIPE).stdout.decode("UTF-8")
             if architecture.find('x86_64') != -1:
-                main()
+                self.deb64()
             elif architecture.find('i686') != -1:
                 self.deb32()
             else:
                 print("There is no support for ", architecture, ", at the moment.")
                 exit()
         elif pkg.find('pacman') != -1:
-            #system("pacman -Sy")
-            #system("pacman -S wget")
+            system("pacman -Sy")
+            system("pacman -S wget")
             self.arch()
         elif pkg.find('dnf') != -1:
             print("\033[36mComing Soon...\033[m")
@@ -38,9 +45,6 @@ class main:
     def deb64(self):
         if (self.path == 1):
             for i in self.program_name:
-                if i == "vivaldi":
-                    system("echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list.d/vivaldi.list")
-                    system("apt-get update")
                 system("apt-get install {}".format(i))
             main()
         elif (self.path == 2):
@@ -74,14 +78,14 @@ class main:
             system("systemctl start apache2")
             main()
         elif (self.path == 4):
-            print(la_d)
-            print(la_kali)
+            print(cpright)
+            print(warning)
             d = int(input("""
             1 - Add Kali repositories & Update
             2 - View Categories
             => """))
             if d == 1:
-                print(la_kali)
+                print(warning)
                 e = int(input("""
             1 - Add kali linux repositories
             2 - Update
@@ -114,7 +118,7 @@ class main:
                     file = open('/etc/apt/sources.list', 'r')
                     print(file.read())
             elif d == 2:
-                print(la_kali)
+                print(warning)
                 e = int(input("""
             \033[1;36m**************************** All Categories *****************************\033[1;m
             0 - All
@@ -156,8 +160,6 @@ class main:
                     system("apt-get install -y android-sdk apktool arduino dex2jar sakis3g smali")
                 elif e == 14:
                     system("apt-get install squid3 && git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifresti")
-        elif (self.path == 5):
-            exit()
         else:
             main()
 
@@ -201,13 +203,13 @@ class main:
             system("systemctl start apache2")
             main()
         elif (self.path == 4):
-            print(la_kali)
+            print(warning)
             d = int(input("""
                     1 - Add Kali repositories & Update
                     2 - View Categories
                     => """))
             if d == 1:
-                print(la_kali)
+                print(warning)
                 e = int(input("""
                     1 - Add kali linux repositories
                     2 - Update
@@ -241,7 +243,7 @@ class main:
                     file = open('/etc/apt/sources.list', 'r')
                     print(file.read())
             elif d == 2:
-                print(la_kali)
+                print(warning)
                 e = int(input("""
                     \033[1;36m**************************** All Categories *****************************\033[1;m
                     0 - All
@@ -297,8 +299,6 @@ class main:
                 elif e == 14:
                     system(
                         "apt-get install squid3 && git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifresti")
-        elif (self.path == 5):
-            exit()
         else:
             self.deb32()
 
@@ -338,8 +338,6 @@ class main:
             main()
         elif (self.path == 4):
             print("...")
-        elif (self.path == 5):
-            exit()
         else:
             main()
 
