@@ -2,31 +2,8 @@
 import os, sys
 
 
-
-la_d="""
-            \033[31m|$$|     $$          |$$$$$$|  |$$|       |$$|     |$$||$$|
-            |$$|    |$$||$$|     |$$|    |$$$$$$|  |$$|  |$$|  |$$||$$|
-            |$$|    |$$||$$$$$$|    |$$|   |$$|   |$$$$$$$$$$| |$$||$$|
-            |$$$$$$||$$||$$  $$||$$$$$$|   |$$|  |$$|      |$$||$$||$$| V1.0\033[m
-
-                    \033[36mA Tool For Installing Any Programs Easily
-                        Coding By M.J. Bagheri Nejad (MJBN)
-                                WebSite: MJBN.IR\033[m
-
-            """
-la_kali="""
-            \033[31m|$$|     $$          |$$$$$$|  |$$|       |$$|     |$$||$$|
-            |$$|    |$$||$$|     |$$|    |$$$$$$|  |$$|  |$$|  |$$||$$|
-            |$$|    |$$||$$$$$$|    |$$|   |$$|   |$$$$$$$$$$| |$$||$$|
-            |$$$$$$||$$||$$  $$||$$$$$$|   |$$|  |$$|      |$$||$$||$$| V1.0\033[m
-
-                    \033[36mA Tool For Installing Any Programs Easily
-                        Coding By M.J. Bagheri Nejad (MJBN)
-                                WebSite: MJBN.IR\033[m
-                    Before updating your system , please remove all 
-                Kali-linux repositories to avoid any kind of problem.\033[m
-
-            """
+la_d="\n\t\033[31m|$$|     $$          |$$$$$$|  |$$|       |$$|     |$$||$$|\n\t|$$|    |$$||$$|     |$$|    |$$$$$$|  |$$|  |$$|  |$$||$$|\n\t|$$|    |$$||$$$$$$|    |$$|   |$$|   |$$$$$$$$$$| |$$||$$|\n\t|$$$$$$||$$||$$  $$||$$$$$$|   |$$|  |$$|      |$$||$$||$$| V1.0\033[m\n\n\t\t\033[36mA Tool For Installing Any Programs Easily\n\t\tCoding By M.J. Bagheri Nejad (MJBN)\n\t\t\tWebSite: MJBN.IR\033[m"
+la_kali="\n\t\033[31m|$$|     $$          |$$$$$$|  |$$|       |$$|     |$$||$$|\n\t|$$|    |$$||$$|     |$$|    |$$$$$$|  |$$|  |$$|  |$$||$$|\n\t|$$|    |$$||$$$$$$|    |$$|   |$$|   |$$$$$$$$$$| |$$||$$|\n\t|$$$$$$||$$||$$  $$||$$$$$$|   |$$|  |$$|      |$$||$$||$$| V1.0\033[m\n\n\t\t\033[36mA Tool For Installing Any Programs Easily\n\t\tCoding By M.J. Bagheri Nejad (MJBN)\n\t\t\tWebSite: MJBN.IR\033[m\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
 class main:
     def __init__(self):
         print(la_d)
