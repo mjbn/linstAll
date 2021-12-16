@@ -9,45 +9,27 @@ la_d="\n\t\033[31m|$$|     $$          |$$$$$$|  |$$|       |$$|     |$$||$$|\n\
 la_kali="\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
 class main:
     def __init__(self):
-        print(la_d)
-        pkg = run(['ls', '/bin/'], stdout=PIPE).stdout.decode("UTF-8")
+        pkg = run(['ls', '/bin/apt', '/bin/pacman', '/bin/dnf'], stdout=PIPE).stdout.decode("UTF-8")
         if pkg.find('apt') != -1:
-            exit("apt")
-            deb()
+            system("apt-get update")
+            system("apt-get install wget")
+            architecture = run(['uname', '-m'], stdout=PIPE).stdout.decode("UTF-8")
+            if architecture.find('x86_64') != -1:
+                self.deb64()
+            elif architecture.find('i686') != -1:
+                self.deb32()
+            else:
+                print("There is no support for ", architecture, ", at the moment.")
+                exit()
         elif pkg.find('pacman') != -1:
-            exit('pacman')
-            arch()
-        elif pkg.find(' dnf') != -1:
-            exit('dnf')
+            self.arch()
+        elif pkg.find('dnf') != -1:
             print("\033[36mComing Soon...\033[m")
             exit()
         else:
             print("\033[36mI don't have any plan for any other Package Management (Distro) now, But maybe in the future, I do something, Who knows\033[m ")
             exit()
-
-    def deb(self):
-        system("apt-get update")
-        system("apt-get install wget")
-        print("")
-        print("")
-        print(la_d)
-        b = input("""
-            Please choose your architecture:
-            1 - amd64 (x64)
-            2 - i386 (x86/x32)
-            3 - Go Back (../)
-            4 - Exit
-            => """)
-        if b == "1":
-            deb.deb64()
-        elif b == "2":
-            deb.deb32()
-        elif b == "3":
-            main()
-        elif b == "4":
-            exit()
-        else:
-            main()
+            
     def deb64(self):
         print(la_d)
         c = input("""
@@ -409,8 +391,8 @@ class main:
             
             
     def arch(self):
-        system("pacman -Sy")
-        system("pacman -S wget")
+        #system("pacman -Sy")
+        #system("pacman -S wget")
         system('clear')
         print(la_d)
         c = input("""
@@ -446,11 +428,7 @@ class main:
                     continue
                 arch()
         elif(c=="3"):
-            program_name = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                                "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                                "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                                "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                                "", "", "", "", ""]
+            program_name = []
             for i in range(101):
                     b = str(input("Enter Your Program Name(Enter \'Done\' to start installing): "))
                     if b != "Done":
