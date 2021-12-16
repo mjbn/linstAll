@@ -1,6 +1,4 @@
-#############################
-##### Create a Database #####
-#############################
+# Create a Database
 
 1.Log into MariaDB:
 
@@ -28,11 +26,7 @@ Note that database usernames and passwords do not correlate to system user accou
 ```
 
 
-------------------------------------------------------------------------------------------------------------------------
-Coding By M.J. Bagheri Nejad (MJBN)
+-----------------------------------
+Coding By [M.J. Bagheri Nejad (MJBN)](http://mjbn.ir)
 
-[WebSite](http://mjbn.ir)
-
-[GitHub](https://github.com/mjbn)
-
-[Src](https://github.com/mjbn/linstAll)
+[GitHub](https://github.com/mjbn/linstAll)
