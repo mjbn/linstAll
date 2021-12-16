@@ -5,23 +5,28 @@ from subprocess import run, PIPE
 import toml
 
 
-la_d="\n\t\033[31m|$$|     $$          |$$$$$$|  |$$|       |$$|     |$$||$$|\n\t|$$|    |$$||$$|     |$$|    |$$$$$$|  |$$|  |$$|  |$$||$$|\n\t|$$|    |$$||$$$$$$|    |$$|   |$$|   |$$$$$$$$$$| |$$||$$|\n\t|$$$$$$||$$||$$  $$||$$$$$$|   |$$|  |$$|      |$$||$$||$$| V1.0\033[m\n\n\t\t\033[36mA Tool For Installing Any Programs Easily\n\t\tCoding By M.J. Bagheri Nejad (MJBN)\n\t\t\tWebSite: MJBN.IR\033[m"
+la_d = "\033[31m _     _           _      _    _ _ \n| |   (_)_ __  ___| |_   / \  | | |\n| |   | | '_ \/ __| __| / _ \ | | |\n| |___| | | | \__ \ |_ / ___ \| | |\n|_____|_|_| |_|___/\__/_/   \_\_|_| V1.0\033[m\n\n\033[36mA Tool For Installing Any Programs Easily\n   Coding By M.J. Bagheri Nejad(MJBN)\n\t  WebSite: MJBN.IR\033[m"
 la_kali="\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
 class main:
     def __init__(self):
+        print(la_d)
+        self.path = int(input("Choose One of The Option Below:\n1 - Install Recommended Programs\n2 - Install What You Want\n3 - Install LAMP Stack (MariaDB, PHP)\n4 - Installing Kali Programs\n5 - Exit\n==> "))
+        self.program_name = ["uget", "vlc", "qbittorrent", "gimp", "tor", "vivaldi", "libreoffice"]
         pkg = run(['ls', '/bin/apt', '/bin/pacman', '/bin/dnf'], stdout=PIPE).stdout.decode("UTF-8")
         if pkg.find('apt') != -1:
             system("apt-get update")
             system("apt-get install wget")
             architecture = run(['uname', '-m'], stdout=PIPE).stdout.decode("UTF-8")
             if architecture.find('x86_64') != -1:
-                self.deb64()
+                main()
             elif architecture.find('i686') != -1:
                 self.deb32()
             else:
                 print("There is no support for ", architecture, ", at the moment.")
                 exit()
         elif pkg.find('pacman') != -1:
+            #system("pacman -Sy")
+            #system("pacman -S wget")
             self.arch()
         elif pkg.find('dnf') != -1:
             print("\033[36mComing Soon...\033[m")
@@ -31,74 +36,25 @@ class main:
             exit()
             
     def deb64(self):
-        print(la_d)
-        c = input("""
-            Choose One of The Option Below:
-            1 - Install Recommended Programs
-            2 - Custom Install
-            3 - Install What You Want
-            4 - Install LAMP Stack (MariaDB, PHP)
-            5 - Installing Kali Programs
-            6 - Exit
-            ==> """)
-        if c == "1":
-            program_name = ["uget", "vlc", "qbittorrent", "gimp", "tor", "vivaldi", "libreoffice"]
-            for i in program_name:
+        if (self.path == 1):
+            for i in self.program_name:
                 if i == "vivaldi":
                     system("echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list.d/vivaldi.list")
                     system("apt-get update")
                 system("apt-get install {}".format(i))
-            deb.deb64()
-        elif c == "2":
-            program_name = ["filezilla", "git", "uget", "vlc", "qbittorrent", "google-chrome", "gimp", "tor",
-                            "telegram-desktop", "aegisub", "libreoffice", "chromium", "godot3", "Steam", "Wine", "Atom", "vivaldi"]
-            for i in program_name:
-                b = str(input("Do you wanna install {}?(Y/n) ".format(i)))
-                if b == "Y":
-                    if i == "Atom":
-                        system("wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add")
-                        system("echo 'deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main' >> /etc/apt/sources.list.d/atom.list")
-                        system("apt-get update")
-                        system("apt-get install atom")
-                        continue
-                    if i == "Wine":
-                        system("dpkg --add-architecture i386 && apt-get update")
-                        system("apt-get install wine wine32 wine64 libwine libwine:i386 fonts-wine")
-                        continue
-                    if i == "Steam":
-                        system("echo 'deb http://deb.debian.org/debian/ buster main contrib non-free' >> /etc/apt/sources.list")
-                        system("dpkg --add-architecture i386")
-                        system("apt-get update")
-                        system("apt-get install steam")
-                        system("apt-get install libgl1:i386 mesa-vulkan-drivers:i386 mesa-vulkan-drivers")
-                        continue
-                    if i == "google-chrome":
-                        system("wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
-                        system("apt-get install ./google-chrome-stable_current_amd64.deb")
-                        continue
-                    if i == "vivaldi":
-                        system("echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list.d/vivaldi.list")
-                        system("apt-get update")
-                    system("apt-get install {}".format(i))
-                else:
-                    continue
-            deb.deb64()
-        elif c == "3":
-            program_name = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", ""]
+            main()
+        elif (self.path == 2):
+            program_name = []
             for i in range(101):
                 b = str(input("Enter Your Program Name(Enter \'exit\' to start installing): "))
                 if b != "exit":
-                    program_name[i] = b
+                    program_name.append(b)
                 else:
                     break
             for i in range(101):
                 system("apt-get install {}".format(program_name[i]))
-            deb.deb64()
-        elif c == "4":
+            main()
+        elif (self.path == 3):
             system("apt-get install mariadb-server apache2 php libapache2-mod-php php-json php-mbstring php-zip php-gd php-xml php-curl php-mysql")
             system("systemctl enable mariadb")
             system("systemctl start mariadb")
@@ -116,8 +72,9 @@ class main:
             system("mysql -u root -p")
             system("systemctl enable apache2")
             system("systemctl start apache2")
-            deb.deb64()
-        elif c == "5":
+            main()
+        elif (self.path == 4):
+            print(la_d)
             print(la_kali)
             d = int(input("""
             1 - Add Kali repositories & Update
@@ -199,74 +156,32 @@ class main:
                     system("apt-get install -y android-sdk apktool arduino dex2jar sakis3g smali")
                 elif e == 14:
                     system("apt-get install squid3 && git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifresti")
-        elif c == "6":
+        elif (self.path == 5):
             exit()
         else:
-            deb.deb64()
+            main()
 
 
     def deb32(self):
-        print(la_d)
-        c = input("""
-            Choose One of The Option Below:
-            1 - Install Recommended Programs
-            2 - Custom Install
-            3 - Install What You Want
-            4 - Install LAMP Stack (MariaDB, PHP)
-            5 - Installing Kali Programs
-            6 - Exit
-            ==> """)
-        if c == "1":
-            program_name = ["uget", "vlc", "qbittorrent", "gimp", "tor", "vivaldi", "libreoffice"]
-            for i in program_name:
+        if (self.path == 1):
+            for i in self.program_name:
                 if i == "vivaldi":
                     system("echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list.d/vivaldi.list")
                     system("apt-get update")
                 system("apt-get install {}".format(i))
-            deb.deb32()
-        elif c == "2":
-            program_name = ["filezilla", "git", "uget", "vlc", "qbittorrent", "google-chrome", "gimp", "tor",
-                            "telegram-desktop", "aegisub", "libreoffice", "chromium", "godot3", "Steam", "Wine", "vivaldi"]
-            for i in program_name:
-                b = str(input("Do you wanna install {}?(Y/n) ".format(i)))
-                if b == "Y":
-                    if i == "Wine":
-                        system("apt-get install wine wine32 libwine fonts-wine")
-                        continue
-                    if i == "Steam":
-                        system(
-                            "echo 'deb http://deb.debian.org/debian/ buster main contrib non-free' >> /etc/apt/sources.list")
-                        system("apt-get update")
-                        system("apt-get install steam")
-                        system("apt-get install libgl1 mesa-vulkan-drivers")
-                        continue
-                    if i == "google-chrome":
-                        system("wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
-                        system("apt-get install ./google-chrome-stable_current_amd64.deb")
-                        continue
-                    if i == "vivaldi":
-                        system("echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list.d/vivaldi.list")
-                        system("apt-get update")
-                    system("apt-get install {}".format(i))
-                else:
-                    continue
-            deb.deb32()
-        elif c == "3":
-            program_name = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "", "", "", "", ""]
+            main()
+        elif (self.path == 2):
+            program_name = []
             for i in range(101):
                 b = str(input("Enter Your Program Name(Enter \'exit\' to start installing): "))
                 if b != "exit":
-                    program_name[i] = b
+                    program_name.append(b)
                 else:
                     break
             for i in range(101):
                 system("apt-get install {}".format(program_name[i]))
-            deb.deb32()
-        elif c == "4":
+            main()
+        elif (self.path == 3):
             system("apt-get install mariadb-server apache2 php libapache2-mod-php php-json php-mbstring php-zip php-gd php-xml php-curl php-mysql")
             system("systemctl enable mariadb")
             system("systemctl start mariadb")
@@ -284,8 +199,8 @@ class main:
             system("mysql -u root -p")
             system("systemctl enable apache2")
             system("systemctl start apache2")
-            deb.deb32()
-        elif c == "5":
+            main()
+        elif (self.path == 4):
             print(la_kali)
             d = int(input("""
                     1 - Add Kali repositories & Update
@@ -382,63 +297,28 @@ class main:
                 elif e == 14:
                     system(
                         "apt-get install squid3 && git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifresti")
-        elif c == "6":
+        elif (self.path == 5):
             exit()
         else:
-            deb.deb32()
-            
-            
-            
-            
+            self.deb32()
+
     def arch(self):
-        #system("pacman -Sy")
-        #system("pacman -S wget")
-        system('clear')
-        print(la_d)
-        c = input("""
-                Choose One of The Option Below:
-                1 - Install Recommended Programs
-                2 - Custom Install
-                3 - Install What You Want
-                4 - Install LAMP Stack (MariaDB, PHP)
-                5 - ...
-                6 - Go Back
-                7 - Exit
-                ==> """)
-        if(c=="1"):
-            program_name = ["uget", "celluloid", "qbittorrent", "gimp", "vivaldi", "libreoffice"]
-            for i in program_name:
+        if (self.path == 1):
+            for i in self.program_name:
                 system("pacman -S {}".format(i))
-            arch()
-        elif(c=="2"):
-            program_name = ["filezilla", "git", "uget", "vlc", "qbittorrent", "gimp", "tor",
-                                "telegram-desktop", "aegisub", "libreoffice", "chromium", "godot3", "wine", "atom", "vivaldi", 'celluloid', "Steam"]
-            for i in program_name:
-                b = str(input("Do you wanna install {}?(Y/n) ".format(i)))
-                if b == "Y":
-                    if i == "Steam":
-                        system('printf "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf')
-                        system("pacman -Sy")
-                        system("pacman -S steam")
-                        system("clear")
-                        print("Please Reboot Your System")
-                        continue
-                    system("pacman -S {}".format(i))
-                else:
-                    continue
-                arch()
-        elif(c=="3"):
+            main()
+        elif (self.path == 2):
             program_name = []
             for i in range(101):
-                    b = str(input("Enter Your Program Name(Enter \'Done\' to start installing): "))
-                    if b != "Done":
-                        program_name[i] = b
-                    else:
-                        break
+                b = str(input("Enter Your Program Name(Enter \'exit\' to start installing): "))
+                if b != "exit":
+                    program_name.append(b)
+                else:
+                    break
             for i in range(101):
                 system("pacman -S {}".format(program_name[i]))
-            arch()
-        elif(c=="4"):
+            main()
+        elif (self.path == 3):
             system("pacman -S apache mariadb mariadb-clients libmariadbclient php php-apache phpmyadmin")
             system("cp ./conf/arch/httpd-mpm.conf ./conf/arch/httpd-default.conf ./conf/arch/httpd-vhosts.conf /etc/httpd/conf/extra/ && cp ./conf/arch/httpd.conf /etc/httpd/conf/")
             system("mkdir -p /srv/http/default /srv/http/localhost/public_html /srv/http/localhost/logs")
@@ -455,21 +335,18 @@ class main:
             system("mkdir -p /usr/share/webapps/phpMyAdmin/tmp/ && chown http /usr/share/webapps/phpMyAdmin/tmp/ && chmod 766 /usr/share/webapps/phpMyAdmin/tmp/")
             system("systemctl enable httpd.service && systemctl start httpd.service")
             print("Now you can access your:\nWebSite From http://localhost\nPHPMyAdmin Panel From http://localhost:3036")
-            arch()
-        elif(c=="5"):
-            print("...")
-        elif(c=="6"):
             main()
-        elif(c=="7"):
+        elif (self.path == 4):
+            print("...")
+        elif (self.path == 5):
             exit()
         else:
-            arch()
+            main()
 
 
-
-
-if getuid() != 0:
-    print("""This Script Requires Root Privilege, Pleas Run It With \"sudo\" or Change To Root User With Command \"su\" or \"sudo su\"""")
-    exit()
-else:
-    main()
+if __name__ == "__main__":
+    if getuid() != 0:
+        print("""This Script Requires Root Privilege, Pleas Run It With \"sudo\" or Change To Root User With Command \"su\" or \"sudo su\"""")
+        exit()
+    else:
+        main()
