@@ -5,7 +5,7 @@ from subprocess import run, PIPE
 import toml
 
 
-class main:
+class linstall:
     cpright = "\033[31m _     _           _      _    _ _ \n| |   (_)_ __  ___| |_   / \  | | |\n| |   | | '_ \/ __| __| / _ \ | | |\n| |___| | | | \__ \ |_ / ___ \| | |\n|_____|_|_| |_|___/\__/_/   \_\_|_| V1.0\033[m\n\n\033[36mA Tool For Installing Any Programs Easily\n   Coding By M.J. Bagheri Nejad(MJBN)\n\t  WebSite: MJBN.IR\033[m"
     warning = "\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
 
@@ -47,7 +47,7 @@ class main:
         if (self.path == 1):
             for i in self.program_name:
                 system("apt-get install {}".format(i))
-            main()
+            linstall()
         elif (self.path == 2):
             program_name = []
             for i in range(101):
@@ -58,7 +58,7 @@ class main:
                     break
             for i in range(101):
                 system("apt-get install {}".format(program_name[i]))
-            main()
+            linstall()
         elif (self.path == 3):
             system("apt-get install mariadb-server apache2 php libapache2-mod-php php-json php-mbstring php-zip php-gd php-xml php-curl php-mysql")
             system("systemctl enable mariadb")
@@ -77,7 +77,7 @@ class main:
             system("mysql -u root -p")
             system("systemctl enable apache2")
             system("systemctl start apache2")
-            main()
+            linstall()
         elif (self.path == 4):
             print(self.cpright)
             print(self.warning)
@@ -162,7 +162,7 @@ class main:
                 elif e == 14:
                     system("apt-get install squid3 && git clone https://github.com/LionSec/wifresti.git && cp wifresti/wifresti.py /usr/bin/wifresti && chmod +x /usr/bin/wifresti && wifresti")
         else:
-            main()
+            linstall()
 
 
     def deb32(self):
@@ -172,7 +172,7 @@ class main:
                     system("echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list.d/vivaldi.list")
                     system("apt-get update")
                 system("apt-get install {}".format(i))
-            main()
+            linstall()
         elif (self.path == 2):
             program_name = []
             for i in range(101):
@@ -183,7 +183,7 @@ class main:
                     break
             for i in range(101):
                 system("apt-get install {}".format(program_name[i]))
-            main()
+            linstall()
         elif (self.path == 3):
             system("apt-get install mariadb-server apache2 php libapache2-mod-php php-json php-mbstring php-zip php-gd php-xml php-curl php-mysql")
             system("systemctl enable mariadb")
@@ -202,7 +202,7 @@ class main:
             system("mysql -u root -p")
             system("systemctl enable apache2")
             system("systemctl start apache2")
-            main()
+            linstall()
         elif (self.path == 4):
             print(self.warning)
             d = int(input("""
@@ -307,7 +307,7 @@ class main:
         if (self.path == 1):
             for i in self.program_name:
                 system("pacman -S {}".format(i))
-            main()
+            linstall()
         elif (self.path == 2):
             program_name = []
             for i in range(101):
@@ -318,7 +318,7 @@ class main:
                     break
             for i in range(101):
                 system("pacman -S {}".format(program_name[i]))
-            main()
+            linstall()
         elif (self.path == 3):
             system("pacman -S apache mariadb mariadb-clients libmariadbclient php php-apache phpmyadmin")
             system("cp ./conf/arch/httpd-mpm.conf ./conf/arch/httpd-default.conf ./conf/arch/httpd-vhosts.conf /etc/httpd/conf/extra/ && cp ./conf/arch/httpd.conf /etc/httpd/conf/")
@@ -336,11 +336,11 @@ class main:
             system("mkdir -p /usr/share/webapps/phpMyAdmin/tmp/ && chown http /usr/share/webapps/phpMyAdmin/tmp/ && chmod 766 /usr/share/webapps/phpMyAdmin/tmp/")
             system("systemctl enable httpd.service && systemctl start httpd.service")
             print("Now you can access your:\nWebSite From http://localhost\nPHPMyAdmin Panel From http://localhost:3036")
-            main()
+            linstall()
         elif (self.path == 4):
             print("...")
         else:
-            main()
+            linstall()
 
 
 if __name__ == "__main__":
@@ -348,4 +348,4 @@ if __name__ == "__main__":
         print("""This Script Requires Root Privilege, Pleas Run It With \"sudo\" or Change To Root User With Command \"su\" or \"sudo su\"""")
         exit()
     else:
-        main()
+        linstall()
