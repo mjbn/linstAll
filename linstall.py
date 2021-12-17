@@ -5,11 +5,12 @@ from subprocess import run, PIPE
 import toml
 
 
-cpright = "\033[31m _     _           _      _    _ _ \n| |   (_)_ __  ___| |_   / \  | | |\n| |   | | '_ \/ __| __| / _ \ | | |\n| |___| | | | \__ \ |_ / ___ \| | |\n|_____|_|_| |_|___/\__/_/   \_\_|_| V1.0\033[m\n\n\033[36mA Tool For Installing Any Programs Easily\n   Coding By M.J. Bagheri Nejad(MJBN)\n\t  WebSite: MJBN.IR\033[m"
-warning="\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
 class main:
+    cpright = "\033[31m _     _           _      _    _ _ \n| |   (_)_ __  ___| |_   / \  | | |\n| |   | | '_ \/ __| __| / _ \ | | |\n| |___| | | | \__ \ |_ / ___ \| | |\n|_____|_|_| |_|___/\__/_/   \_\_|_| V1.0\033[m\n\n\033[36mA Tool For Installing Any Programs Easily\n   Coding By M.J. Bagheri Nejad(MJBN)\n\t  WebSite: MJBN.IR\033[m"
+    warning = "\n\tBefore updating your system , please remove all\n\t\tKali-linux repositories to avoid any kind of problem.\033[m"
+
     def __init__(self):
-        print(cpright)
+        print(self.cpright)
         self.path = int(input("Choose One of The Option Below:\n1 - Install Recommended Programs\n2 - Install What You Want\n3 - Install LAMP Stack (MariaDB, PHP)\n4 - Installing Kali Programs\n5 - Exit\n==> "))
         
         # Exit if the path equals 5
@@ -78,14 +79,14 @@ class main:
             system("systemctl start apache2")
             main()
         elif (self.path == 4):
-            print(cpright)
-            print(warning)
+            print(self.cpright)
+            print(self.warning)
             d = int(input("""
             1 - Add Kali repositories & Update
             2 - View Categories
             => """))
             if d == 1:
-                print(warning)
+                print(self.warning)
                 e = int(input("""
             1 - Add kali linux repositories
             2 - Update
@@ -118,7 +119,7 @@ class main:
                     file = open('/etc/apt/sources.list', 'r')
                     print(file.read())
             elif d == 2:
-                print(warning)
+                print(self.warning)
                 e = int(input("""
             \033[1;36m**************************** All Categories *****************************\033[1;m
             0 - All
@@ -203,13 +204,13 @@ class main:
             system("systemctl start apache2")
             main()
         elif (self.path == 4):
-            print(warning)
+            print(self.warning)
             d = int(input("""
                     1 - Add Kali repositories & Update
                     2 - View Categories
                     => """))
             if d == 1:
-                print(warning)
+                print(self.warning)
                 e = int(input("""
                     1 - Add kali linux repositories
                     2 - Update
@@ -243,7 +244,7 @@ class main:
                     file = open('/etc/apt/sources.list', 'r')
                     print(file.read())
             elif d == 2:
-                print(warning)
+                print(self.warning)
                 e = int(input("""
                     \033[1;36m**************************** All Categories *****************************\033[1;m
                     0 - All
