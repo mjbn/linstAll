@@ -3,16 +3,12 @@ A Tool For Installing Any Program Easily On Linux
 
 You can install any Program like Kali/BlackArch Tools, Atom, Chrome, Vivaldi, LAMP (Apache, MariaDB,PHP),... using LinstAll
 
-Coding By M.J. Bagheri Nejad (MJBN)
+Coding By [M.J. Bagheri Nejad (MJBN)](https://MJBN.IR)
 
-Website: <a href="https://MJBN.IR">MJBN.IR</a>
+## Installation
+### Using Command Line
+#### Solution 1 (recommended)
+```git clone https://github.com/mjbn/linstAll.git ~/ && sudo chmod +x ~/linstAll/Installation.py && sudo ~/linstAll/Installation.py```
 
-<h2>Installation</h2>
-  <h3>Using Command Line</h3>
-   <h4>Solution 1 (recommended)</h4>
-   
-     git clone https://github.com/MJBN/LinstAll.git ~/ && sudo chmod +x ~/LinstAll/Installation.py && sudo ~/LinstAll/Installation.py
-
-   <h4>Solution 2</h4>
-
-     git clone https://github.com/MJBN/LinstAll.git ~/ && sudo chmod +x ~/LinstAll/LinstAll.py && sudo ~/LinstAll/LinstAll.py
+#### Solution 2
+```git clone https://github.com/mjbn/linstAll.git ~/ && sudo chmod +x ~/linstAll/linstall.py && sudo ~/linstAll/linstall.py```
